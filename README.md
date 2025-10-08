@@ -3,49 +3,70 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Surprise!</title>
+  <title>I Love You Hadell ❤️</title>
   <style>
     body {
+      margin: 0;
+      height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
-      background: linear-gradient(135deg, #f6d365, #fda085);
-      font-family: Arial, sans-serif;
-      text-align: center;
+      background: radial-gradient(circle at top left, #ff99cc, #660033);
+      overflow: hidden;
+      font-family: 'Poppins', sans-serif;
     }
-    button {
-      padding: 15px 30px;
-      font-size: 20px;
-      border: none;
-      border-radius: 10px;
-      background-color: #4CAF50;
+
+    h1 {
       color: white;
-      cursor: pointer;
-      transition: transform 0.2s;
+      font-size: 3rem;
+      text-shadow: 0 0 20px #ff99cc, 0 0 40px #ff66b2, 0 0 60px #ff3399;
+      animation: glow 2s infinite alternate;
     }
-    button:hover {
-      transform: scale(1.1);
+
+    @keyframes glow {
+      from { text-shadow: 0 0 10px #ff99cc, 0 0 20px #ff66b2; }
+      to { text-shadow: 0 0 30px #ff66b2, 0 0 60px #ff3399; }
     }
-    #message {
-      margin-top: 20px;
-      font-size: 28px;
-      font-weight: bold;
-      color: #333;
-      display: none;
+
+    .heart {
+      position: absolute;
+      color: #ff99cc;
+      font-size: 20px;
+      animation: floatUp 5s linear infinite;
+      opacity: 0.8;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-800px) scale(1.5);
+        opacity: 0;
+      }
     }
   </style>
 </head>
 <body>
-  <div>
-    <button onclick="showMessage()">Click Me!</button>
-    <div id="message">Thank You, Mahomood! 💛</div>
-  </div>
+  <h1>I Love You, Hadell ❤️</h1>
 
   <script>
-    function showMessage() {
-      document.getElementById('message').style.display = 'block';
+    // Create floating hearts
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.textContent = '❤️';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.fontSize = Math.random() * 20 + 20 + 'px';
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 5000);
     }
+
+    setInterval(createHeart, 300);
   </script>
 </body>
 </html>
