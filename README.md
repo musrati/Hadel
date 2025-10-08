@@ -1,74 +1,81 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>أحبك يا هديل ❤️</title>
-  <style>
-    body {
-      margin: 0;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      background: radial-gradient(circle at top left, #ff99cc, #660033);
-      overflow: hidden;
-      font-family: 'Cairo', sans-serif;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hearts Page</title>
+<style>
+  body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #ffe6f0;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+  }
 
-    .heart {
-      font-size: 100px;
-      cursor: pointer;
-      animation: pump 0.8s infinite alternate;
-      transition: transform 1.2s ease, opacity 1.2s ease;
-    }
+  #buttonContainer {
+    position: absolute;
+    top: 20px;
+    text-align: center;
+    width: 100%;
+  }
 
-    @keyframes pump {
-      from { transform: scale(1); }
-      to { transform: scale(1.25); }
-    }
+  button {
+    padding: 15px 30px;
+    font-size: 18px;
+    border: none;
+    border-radius: 10px;
+    background: #ff4d94;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+  }
 
-    .float {
-      animation: floatUp 1.2s ease forwards;
-    }
+  .heart {
+    position: absolute;
+    font-size: 24px;
+    color: red;
+    animation: floatUp 5s linear infinite;
+    pointer-events: none;
+  }
 
-    @keyframes floatUp {
-      0% { transform: translateY(0) scale(1); opacity: 1; }
-      100% { transform: translateY(-180px) scale(1.4); opacity: 0; }
-    }
-
-    .text {
-      color: white;
-      font-size: 2.3rem;
-      text-shadow: 0 0 15px #ff99cc, 0 0 30px #ff66b2, 0 0 45px #ff3399;
-      opacity: 0;
-      transform: translateY(30px);
-      transition: all 0.9s ease-in-out;
-    }
-
-    .text.show {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  </style>
+  @keyframes floatUp {
+    0% { transform: translateY(0) scale(1); opacity: 1; }
+    100% { transform: translateY(-800px) scale(1.5); opacity: 0; }
+  }
+</style>
 </head>
 <body>
-  <div class="heart" id="heart">❤️</div>
-  <div class="text" id="text">هديل. أجمل فتاة في العالم 💖</div>
 
-  <script>
-    const heart = document.getElementById('heart');
-    const text = document.getElementById('text');
+<div id="buttonContainer">
+  <button onclick="addHearts()">Hadel</button>
+</div>
 
-    heart.addEventListener('click', () => {
-      heart.classList.add('float');
-      heart.style.animation = 'none'; // توقف نبض القلب
-      setTimeout(() => {
-        heart.style.display = 'none';
-        text.classList.add('show');
-      }, 1000); // بعد ثانية واحدة فقط
-    });
-  </script>
+<script>
+function addHearts() {
+  const numHearts = 10; // number of hearts per click
+  for(let i=0; i<numHearts; i++){
+    const heart = document.createElement('div');
+    heart.classList.add('heart');
+    heart.innerText = '❤️';
+    
+    // Random position
+    heart.style.left = Math.random() * window.innerWidth + 'px';
+    heart.style.top = Math.random() * window.innerHeight + 'px';
+    
+    document.body.appendChild(heart);
+
+    // Remove heart after animation
+    setTimeout(() => heart.remove(), 5000);
+  }
+}
+
+// Add some hearts initially
+addHearts();
+</script>
+
 </body>
 </html>
