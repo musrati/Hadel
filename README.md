@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>أحبك يا هادل ❤️</title>
+  <title>أحبك يا هديل ❤️</title>
   <style>
     body {
       margin: 0;
@@ -55,7 +55,7 @@
 </head>
 <body>
   <div class="heart" id="heart">❤️</div>
-  <div class="text" id="text">هادل.. أجمل فتاة في العالم 💖</div>
+  <div class="text" id="text">هديل. أجمل فتاة في العالم 💖</div>
 
   <script>
     const heart = document.getElementById('heart');
